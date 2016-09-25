@@ -60,7 +60,12 @@ namespace AzureMeetup.Controllers
             {
                 return NotFound();
             }
-            this._context.ToDo.Update(toDo);
+            if (toDo.Description != null)
+            {
+                existingItem.Description = toDo.Description;
+            }
+            existingItem.Complete = toDo.Complete;
+            this._context.ToDo.Update(existingItem);
             this._context.SaveChanges();
             return NoContent();
         }

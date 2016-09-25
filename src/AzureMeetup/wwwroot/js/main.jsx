@@ -4,8 +4,8 @@
 ];
 
 var ToDoItem = React.createClass({
-    handleCheck: function(e) {
-        this.props.changeToDoComplete(this.props.id, e.target.value);
+    handleCheck: function (e) {
+        this.props.changeToDoComplete(this.props.id, this.props.complete ? !this.props.complete : this.props.complete );
     },
     render: function () {
         return(
@@ -22,7 +22,7 @@ var ToDoList = React.createClass({
         var changeToDoComplete = this.props.changeToDoComplete;
         var todoNodes = this.props.data.map(function (todo) {
             return (
-                <ToDoItem id={todo.id} changeToDoComplete={ changeToDoComplete }>{todo.description}</ToDoItem>    
+                <ToDoItem id={todo.id} complete={todo.complete} changeToDoComplete={ changeToDoComplete }>{todo.description}</ToDoItem>    
             );
         });
         return (
