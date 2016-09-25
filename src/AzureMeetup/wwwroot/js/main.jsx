@@ -5,11 +5,11 @@
 
 var ToDoItem = React.createClass({
     handleCheck: function (e) {
-        this.props.changeToDoComplete(this.props.id, this.props.complete ? !this.props.complete : this.props.complete );
+        this.props.changeToDoComplete(this.props.id, this.props.complete===true ? false : true );
     },
     render: function () {
         return(
-            <div className="todo">
+            <div className="todo well well-sm">
                 <input type="checkbox" checked={ this.props.complete } onChange={ this.handleCheck } />
                 {this.props.children}
             </div>
