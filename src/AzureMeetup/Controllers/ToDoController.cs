@@ -42,6 +42,10 @@ namespace AzureMeetup.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]ToDo toDo)
         {
+            if (toDo == null)
+            {
+                return BadRequest();
+            }
             this._context.ToDo.Add(toDo);
             this._context.SaveChanges();
             return Ok(toDo);
