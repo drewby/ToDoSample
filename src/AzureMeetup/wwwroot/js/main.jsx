@@ -9,9 +9,9 @@ var ToDoItem = React.createClass({
     },
     render: function () {
         return(
-            <div className="todo well well-sm">
-                <input type="checkbox" checked={ this.props.complete } onChange={ this.handleCheck } />
-                {this.props.children}
+            <div className="todoItem well well-sm">
+                <input className="col-sm-1" type="checkbox" checked={ this.props.complete } onChange={ this.handleCheck } />
+                <div className="col-lg-push-11">{this.props.children}</div>
             </div>
         );
     }
@@ -22,7 +22,7 @@ var ToDoList = React.createClass({
         var changeToDoComplete = this.props.changeToDoComplete;
         var todoNodes = this.props.data.map(function (todo) {
             return (
-                <ToDoItem id={todo.id} complete={todo.complete} changeToDoComplete={ changeToDoComplete }>{todo.description}</ToDoItem>    
+                <ToDoItem todo={todo.id} complete={todo.complete} changeToDoComplete={ changeToDoComplete }>{todo.description}</ToDoItem>    
             );
         });
         return (
